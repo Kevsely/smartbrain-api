@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt-nodejs');
 
 const app = express();
 app.use(express.json());
@@ -82,6 +83,6 @@ app.put('/image', (req, res) => {
         res.status(404).json('No such user'); 
 })
 
-app.listen(3000, () => {
-    console.log('The app is running correctly on port 3000');
+app.listen(3001, () => {
+    console.log('The app is running correctly on port 3001');
 })
