@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
     if(req.body.email === database.users[0].email 
         && req.body.password === database.users[0].password)
-        res.json('success');
+        res.json(database.users[0]);
     else
         res.status(400).json('rejected');
 })
@@ -81,8 +81,9 @@ app.put('/image', (req, res) => {
             return res.json(user.entries);
         }
     })
-    if(!found)
+    if(!found) {
         res.status(404).json('No such user'); 
+    }
 })
 
 app.listen(3001, () => {
