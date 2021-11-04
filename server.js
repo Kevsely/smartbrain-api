@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt-nodejs'); //Not used yet
 const cors = require('cors');
 
 const app = express();
@@ -87,5 +87,5 @@ app.put('/image', (req, res) => {
 })
 
 app.listen(3001, () => {
-    console.log('The app is running correctly on port 3001');
+    console.log('App is running correctly on port 3001');
 })
