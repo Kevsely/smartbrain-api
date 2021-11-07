@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
     //We're just checking for the first user. 
     //We'll complete the functionnality when we'll create a database
-    //Probably PostgreSQL
+    //Probably a relationnal database
     if(req.body.email === database.users[0].email 
         && req.body.password === database.users[0].password)
         res.json(database.users[0]);
