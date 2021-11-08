@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt-nodejs'); //Not used yet
+const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const { response } = require('express');
 const db = require('knex')({
@@ -18,7 +18,8 @@ app.use(cors());
 
 //REQUEST
 app.get('/', (req, res) => {
-    res.json(database.users);
+    db.select('*').from('users')
+    .then(data => res.json(data));
 })
 
 //Signin - POST = Success/Fail
