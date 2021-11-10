@@ -1,3 +1,5 @@
+const signin = require('./Controllers/SignIn');
+
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
@@ -23,22 +25,7 @@ app.get('/', (req, res) => {
 })
 
 //Signin - POST = Success/Fail
-app.post('/signin', (req, res) => {
-    const {email, password} = req.body; 
-    db.select('email', 'hash').from('login').where('email', '=', email)
-    .then(data => {
-        const isValid = bcrypt.compareSync(password, data[0].hash);
-        if(isValid) {
-            db.select('*').from('users').where('email', '=', email)
-            .then(user => res.json(user[0]))
-            .catch(err => res.status(400).json('Unable to get user'))
-        }
-        else {
-            res.status(400).json('Wrong credentials'); 
-        }
-    })
-    .catch(err => res.status(400).json('Error while logging in'))
-})
+app.post('/signin', signin.handleSignIn(db, bcrypt));
 
 //Register - POST = user
 app.post('/register', (req, res) => {
