@@ -39,6 +39,7 @@ app.get('/profile/:id', profile.handleProfile(db));
 //Image - PUT = user
 app.put('/image', image.handleImage(db));
 
-app.listen(3001, () => {
-    console.log('App is running correctly on port 3001');
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`App is running correctly on port ${PORT}`);
 })
