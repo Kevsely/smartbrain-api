@@ -10,17 +10,17 @@ const { response } = require('express');
 const db = require('knex')({
     
     client: 'pg',
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
+    
+    connection: {
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
+        // host: '127.0.0.1',
+        // user: 'kevsely',
+        // password: 'admin',
+        // database: 'smart-brain'
     }
-
-    // connection: {
-    //     host: '127.0.0.1',
-    //     user: 'kevsely',
-    //     password: 'admin',
-    //     database: 'smart-brain'
-    // }
 });
 
 const app = express();
