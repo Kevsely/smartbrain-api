@@ -30,6 +30,7 @@ app.use(cors());
 //REQUEST
 app.get('/', (req, res) => {
     db.select('*').from('users')
+    .returning('*')
     .then(data => res.json(data));
     //res.json('it is working');
 })
