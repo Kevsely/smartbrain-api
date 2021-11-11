@@ -9,12 +9,12 @@ const cors = require('cors');
 const { response } = require('express');
 const db = require('knex')({
     
+    client: 'pg',
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
-    
-    // client: 'pg',
+
     // connection: {
     //     host: '127.0.0.1',
     //     user: 'kevsely',
