@@ -29,9 +29,9 @@ app.use(cors());
 
 //REQUEST
 app.get('/', (req, res) => {
-    // db.select('*').from('users')
-    // .then(data => res.json(data));
-    res.json('it is working');
+    db.select('*').from('users')
+    .then(data => res.json(data));
+    //res.json('it is working');
 })
 
 //Signin - POST = Success/Fail
