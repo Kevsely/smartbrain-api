@@ -8,13 +8,19 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const { response } = require('express');
 const db = require('knex')({
-    client: 'pg',
-    connection: {
-        host: '127.0.0.1',
-        user: 'kevsely',
-        password: 'admin',
-        database: 'smart-brain'
+    
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
     }
+    
+    // client: 'pg',
+    // connection: {
+    //     host: '127.0.0.1',
+    //     user: 'kevsely',
+    //     password: 'admin',
+    //     database: 'smart-brain'
+    // }
 });
 
 const app = express();
